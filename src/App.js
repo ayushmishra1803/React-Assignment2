@@ -1,18 +1,33 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import Validator  from "./ValidatorComponent/Validator";
 import "./App.css";
+import CharComponent from "./CharComponent/Char";
 
 class App extends Component {
+	state = {
+		Message:""
+	};
+	MessageArray
+	ShoWMEssageArray
+	UpdatesMessageHandler = (event) => {
+		let message = event.target.value;
+		this.setState({
+			Message: message,
+		});
+		this.MessageArray =this.state.Message.split("");
+	this.ShoWMEssageArray=	this.MessageArray.map(re=>{
+			return <CharComponent />;
+		})
+	};
+	
+	MessageLength;
 	render() {
 		return (
 			<div className="App">
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">Welcome to React</h1>
-				</header>
-				<p className="App-intro">
-					To get started, edit <code>src/App.js</code> and save to reload.
-				</p>
+				<input type="text" onChange={this.UpdatesMessageHandler} />
+				{this.state.Message.length}
+				<Validator numberOfText={this.state.Message.length} />
+				{this.MessageArray}
 			</div>
 		);
 	}
