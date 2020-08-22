@@ -13,10 +13,23 @@ class App extends Component {
 			Message: event.target.value,
 		});
 	};
-
+	deleteOnClick = (index) => {
+		const text=this.state.Message.split("");
+		text.splice(index,1);
+		const UpdatedMessage=text.join("")
+		this.setState({
+			Message:UpdatedMessage
+		})
+	};
 	render() {
 		const CharList = this.state.Message.split("").map((re, index) => {
-			return <Char charChar={re} key={index} />;
+			return (
+				<Char
+					charChar={re}
+					key={index}
+					delete={() => this.deleteOnClick(index)}
+				/>
+			);
 		});
 		return (
 			<div className="App">

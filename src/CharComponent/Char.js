@@ -4,13 +4,13 @@ const charComponent=(props)=>{
     display:'inline-block',
     padding:'16px',
     margin:"16px",
-    border:"1px solid block",
+    border:"1px solid black",
     textAlign:"center"
 
     }
     return (
 			<div style={style}>
-				<p>{props.charChar}</p>
+				<p onClick={props.delete}>{props.charChar}</p>
 			</div>
 		);
 }
