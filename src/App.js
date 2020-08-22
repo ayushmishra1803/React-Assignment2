@@ -18,8 +18,11 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+				<h1>Assignment 2</h1>
 				<input type="text" onChange={this.UpdatesMessageHandler} />
-				{this.state.Message.length}
+				<br />
+				<p>{this.state.Message}</p>
+
 				<Validator numberOfText={this.state.Message.length} />
 			</div>
 		);
