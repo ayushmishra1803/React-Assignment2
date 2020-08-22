@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Validator from "./ValidatorComponent/Validator";
 import "./App.css";
+import Char from "./CharComponent/Char";
 
 class App extends Component {
 	state = {
@@ -8,22 +9,28 @@ class App extends Component {
 	};
 
 	UpdatesMessageHandler = (event) => {
-		let message = event.target.value;
 		this.setState({
-			Message: message,
+			Message: event.target.value,
 		});
 	};
 
-	MessageLength;
 	render() {
+		const CharList = this.state.Message.split("").map((re, index) => {
+			return <Char charChar={re} key={index} />;
+		});
 		return (
 			<div className="App">
 				<h1>Assignment 2</h1>
-				<input type="text" onChange={this.UpdatesMessageHandler} />
+				<input
+					type="text"
+					onChange={this.UpdatesMessageHandler}
+					value={this.state.Message}
+				/>
 				<br />
 				<p>{this.state.Message}</p>
 
 				<Validator numberOfText={this.state.Message.length} />
+				{CharList}
 			</div>
 		);
 	}
